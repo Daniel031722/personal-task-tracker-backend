@@ -1,0 +1,38 @@
+using Microsoft.AspNetCore.Mvc;
+using personal_task_tracker_backend.Models;
+
+namespace personal_task_tracker_backend.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class MembersController : ControllerBase
+    {
+        // Mock data like mentor wrote
+        private static readonly List<Member> memberList = new List<Member>
+        {
+            new Member { Id = 1, Name = "Daniel" },
+            new Member { Id = 2, Name = "Khushi" },
+            new Member { Id = 3, Name = "Rohit" },
+            new Member { Id = 4, Name = "Pallavi" }
+        };
+
+        // GET: /Members
+        [HttpGet]
+        public ActionResult<IEnumerable<Member>> GetMembers()
+        {
+            return Ok(memberList);
+        }
+
+        // GET: /Members/2
+        [HttpGet("{id}")]
+        public ActionResult<Member> GetMemberById(int id)
+        {
+            var member = memberList.FirstOrDefault(m => m.Id == id);
+
+            if (member == null)
+                return NotFound();
+
+            return Ok(member);
+        }
+    }
+}
