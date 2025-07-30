@@ -7,13 +7,13 @@ namespace personal_task_tracker_backend.Controllers
     [Route("[controller]")]
     public class MembersController : ControllerBase
     {
-        // Mock data like mentor wrote
+        // Updated mock data
         private static readonly List<Member> memberList = new List<Member>
         {
-            new Member { Id = 1, Name = "Daniel" },
-            new Member { Id = 2, Name = "Khushi" },
-            new Member { Id = 3, Name = "Rohit" },
-            new Member { Id = 4, Name = "Pallavi" }
+            new Member { Id = 1, FirstName = "Daniel", LastName = "Pinto", College = "RIT" },
+            new Member { Id = 2, FirstName = "Khushi", LastName = "Chitari", College = "RIT" },
+            new Member { Id = 3, FirstName = "Rohit", LastName = "Vishwakarma", College = "GEC" },
+            new Member { Id = 4, FirstName = "Pallavi", LastName = "Sutar", College = "PCCE" }
         };
 
         // GET: /Members
@@ -28,7 +28,6 @@ namespace personal_task_tracker_backend.Controllers
         public ActionResult<Member> GetMemberById(int id)
         {
             var member = memberList.FirstOrDefault(m => m.Id == id);
-
             if (member == null)
                 return NotFound();
 
