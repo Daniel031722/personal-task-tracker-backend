@@ -36,12 +36,12 @@ builder.Services.AddDbContext<TaskDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 👉 Add CORS policy here
+//  Add CORS policy here
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontendApp", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // 👈 Add your React frontend URL here
+        policy.WithOrigins("http://localhost:3000") //  Add your React frontend URL here
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -58,7 +58,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// 👉 Use CORS before Authorization
+//  Use CORS before Authorization
 app.UseCors("AllowFrontendApp");
 
 app.UseAuthorization();
